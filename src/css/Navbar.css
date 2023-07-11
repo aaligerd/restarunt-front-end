@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Konkhmer+Sleokchher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Satisfy&display=swap');
+
+
+#top-navbar{
+    background-color: rgba(0, 0, 0, 0.601);
+}
+
+
+#top-navmenu{
+    list-style: none;
+    font-size: 30px;
+    font-family: 'Satisfy', cursive;
+    color: whitesmoke;
+}
+#top-navmenu li{
+    padding: 0 25px;
+}
+#brandname{
+    font-size: 35px;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    color: whitesmoke;
+      
+}
