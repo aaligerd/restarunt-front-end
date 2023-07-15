@@ -1,0 +1,15 @@
+#orderStatusChangeBtn{
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    margin-left:10px;
+    font-size: 15px;
+    padding: 0 10px;
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+#tblLastCol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

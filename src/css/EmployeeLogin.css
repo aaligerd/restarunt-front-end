@@ -1,0 +1,57 @@
+
+
+
+.input-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    border: 1px solid rgb(251, 251, 251);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    padding: 10px;
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);;
+}
+.input-box label{
+    font-size: 30px;
+    text-align: center;
+    margin: 20px 0px;
+    text-transform: uppercase;
+}
+
+.input-box input[type=email] , .input-box input[type=password], .input-box input[type=text]{
+    width: 70%;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+}
+.input-box input[type=button]{
+    width: 20%;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background-color: #85929e;
+}
+.input-box input[type=button]:hover
+{
+    background-color: black;
+    color:whitesmoke ;
+}
+.forgetpass{
+    margin: 10px 0px;
+    text-decoration: none;
+    color: black;
+}
+.forgetpass:hover{
+    text-decoration: underline;
+}

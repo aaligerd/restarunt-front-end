@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Konkhmer+Sleokchher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+.brand-col{
+    background-color: rgb(230, 134, 55);
+}
+
+#brand-name{
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(31, 31, 31);
+}
+#profile-name{
+    font-size: 30px;
+    font-family: 'DM Sans', sans-serif;
+    
+}
+
+#logoutbtn{
+    background-color: black;
+    color: whitesmoke;
+    border: none;
+    outline: none;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+table {
+    width:100%;
+    border:1px solid #b3adad;
+    border-collapse:separate;
+    border-spacing:3px;
+    padding:5px;
+}
+table th {
+    border:1px solid #b3adad;
+    padding:5px;
+    background: #dbdbdb;
+    color: #313030;
+    font-size: 24px;
+}
+table td {
+    border:1px solid #b3adad;
+    text-align:left;
+    padding:5px;
+    background: #efefef;
+    color: #313030;
+    font-size: 24px;
+}
