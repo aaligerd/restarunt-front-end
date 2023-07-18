@@ -1,0 +1,8 @@
+.choosed-item-container{
+    background-color: rgb(219, 219, 219);
+    width: 20%;
+    height: 500px;
+}
+.top-text{
+    text-transform: uppercase;
+}

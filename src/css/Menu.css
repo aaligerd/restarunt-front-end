@@ -1,0 +1,15 @@
+.menu-container{
+    width: 20%;
+    height: 500px;
+    background-color: rgb(233, 233, 233);
+    overflow-y: scroll;
+    scrollbar-color: #dd7869 #e0e0e0;
+    scrollbar-width: thin;
+    border-bottom: 10px solid rgb(233, 233, 233);
+}
+#select-lbl{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+}

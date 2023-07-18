@@ -1,13 +1,21 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
+import {useNavigate} from "react-router-dom";
 import "../css/CasherHomepage.css";
 import SingleRowComponent from "../components/SingleRowComponent";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
+import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons";
+import PageHeader from "../components/PageHeader";
 
 export default function CasherHomePage() {
   let fullname = localStorage.getItem("name");
   let fname = fullname.split(" ")[0];
   const [empName, setEmpName] = useState(fname);
   const [orders, setOrders] = useState(null);
+  const [msg, setMsg] = useState("")
+  const [loadOrderData, setLoadOrderData] = useState(false);
+  const navigate=useNavigate();
 
   const { setLoggedIn } = useContext(AppContext);
   const handelLogout = () => {
@@ -19,17 +27,18 @@ export default function CasherHomePage() {
     
     fetch("http://localhost:8080/order/getall")
     .then(res=>res.json())
-    .then(res=>{setOrders(res)})
+    .then(res=>{res=sortOrders(res);setOrders(res);})
     .catch(err=>{console.log(err)});
-  },[]);
+  },[loadOrderData]);
+  const sortOrders=(res)=>{
+    return res.sort((a,b)=>{
+      return b.orderPriority.orderPriority - a.orderPriority.orderPriority;
+    });
+  }
 
   return (
     <div className="container-fluid">
-      <div className="row brand-col">
-        <div className="col d-flex justify-content-center">
-          <p id="brand-name">Welcome to Majumder's</p>
-        </div>
-      </div>
+      <PageHeader/>
       <div className="row  mt-3">
         <div className="col-4 d-flex justify-content-start">
           <p id="profile-name">
@@ -37,11 +46,11 @@ export default function CasherHomePage() {
           </p>
         </div>
         <div className="col-4 d-flex justify-content-around">
-          <button className="btn btn-primary" onClick={handelLogout}>
+          <button className="btn btn-primary" onClick={()=>{navigate("/neworder");}}>
             {" "}
             New Order
           </button>
-          <button className="btn btn-primary" onClick={handelLogout}>
+          <button className="btn btn-primary" >
             {" "}
             Order Status
           </button>
@@ -54,10 +63,21 @@ export default function CasherHomePage() {
           >
             {" "}
             Log out
+            <FontAwesomeIcon icon={faArrowRightFromBracket} className="mx-2"/>
           </button>
         </div>
       </div>
       <div className="container mt-5">
+        <div className="row position-absolute updateText">
+          <div className="col">
+            <p className="text-center">{msg}</p>
+          </div>
+        </div>
+        <div className="row my-2">
+          <div className="col d-flex justify-content-end">
+            <button style={{border:"none",outline:"none", padding:"5px 10px",backgroundColor:"#000",color:"#fff",borderRadius:"5px"}} onClick={()=>{setLoadOrderData(!loadOrderData)}}>Refresh <FontAwesomeIcon icon={faRotateRight}/></button>
+          </div>
+        </div>
         <table>
           <thead>
             <tr>
@@ -70,24 +90,24 @@ export default function CasherHomePage() {
           </thead>
           <tbody>
             {orders && orders.map((ele,indx)=>{
-              let orderStatus=ele.orderstatus;
+              let orderStatus=ele.orderPriority.orderStatusName;
               let ftext,fcolor;
               if(orderStatus==="served"){
                 fcolor="black";
-                ftext="SERVED";
+                ftext="served";
               }
               else if(orderStatus==="ready"){
                 fcolor="green";
-                ftext="READY";
+                ftext="ready";
               }
               else if(orderStatus==="ongoing"){
                 fcolor="blue";
-                ftext="ONGOING";
+                ftext="ongoing";
               }
               else{
                
                   fcolor="red";
-                  ftext="WAITING";
+                  ftext="waiting";
                 
               }
              return <tr key={indx}>
@@ -96,7 +116,7 @@ export default function CasherHomePage() {
                 <td>{ele.customer.cname}</td>
                 <td>{ele.packet.packetprice}</td>
                 
-                <SingleRowComponent fcolor={fcolor} ftext={ftext}/>
+                <SingleRowComponent fcolor={fcolor} ftext={ftext} id={indx} orderNo={ele.orderno} setMsg={setMsg} loadOrderData={loadOrderData} loadDataFun={setLoadOrderData}/>
               </tr>
             })}
           </tbody>

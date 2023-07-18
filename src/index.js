@@ -8,14 +8,14 @@ import { LoginPovider } from './context/LoginContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+
     <AppPovider>
       <LoginPovider>
           <App />
       </LoginPovider>
     </AppPovider>
     
-  </React.StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

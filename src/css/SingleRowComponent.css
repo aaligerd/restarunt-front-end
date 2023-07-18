@@ -4,12 +4,58 @@
     border-radius: 50%;
     margin-left:10px;
     font-size: 15px;
-    padding: 0 10px;
-    background-color: antiquewhite;
+    padding: 0 9px;
+    background-color: rgb(110, 110, 110);
+    color: whitesmoke;
     cursor: pointer;
+}
+#orderStatusChangeBtn:hover{
+    background-color: black;
 }
 #tblLastCol{
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
+    text-transform: uppercase;
+    position: relative;
+}
+.changeOptions{
+    position: relative;
+}
+.changeOptions button:nth-child(1){
+    margin-left: 10px;
+}
+.changeOptions button:nth-child(2){
+    margin-left:100px;
+}
+.changeOptions button:nth-child(3){
+    margin-left: 200px;
+}
+.changeBtn{
+    font-size: 15px;
+    border: 2px solid black;
+    background-color: whitesmoke;
+    color: #000;
+    border-radius: 10px;
+    text-transform: uppercase;
+    transition: 0.3s ease-in;
+}
+.activeChangeBtn{
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    z-index: 1;
+    transform: scale(1);
+}
+.deactiveChangeBtn{
+    /* position: absolute;
+    top: -15px;
+    left: -270px;
+    z-index:-1;
+    opacity: 1; */
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    z-index: 1;
+    transform: scale(0);
 }

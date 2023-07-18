@@ -1,0 +1,15 @@
+#top-text{
+    font-size: 30px;
+    text-transform: uppercase;
+    margin: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: rgb(23, 112, 235);
+}
+#item-choose-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 100px;
+    column-gap: 100px;
+}
