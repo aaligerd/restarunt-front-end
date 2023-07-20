@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 function EmployeeLoging() {
 const [empCredential, setEmpCredential] = useState({email:"",password:""});
 const [msg, setMsg] = useState("")
-const {setLoggedIn} =useContext(AppContext);
+const {setLoggedIn,setEmp} =useContext(AppContext);
 
 const handelLogin=()=>{
 
@@ -45,6 +45,7 @@ const handelLogin=()=>{
             })
         .then(result=>{
             localStorage.clear();
+            setEmp(result);
             localStorage.setItem("id",result.empid);
             localStorage.setItem("name",result.empname);
             localStorage.setItem("role",result.empjobrole);

@@ -5,6 +5,7 @@ import Menu from '../components/Menu';
 import SelectItem from '../components/SelectItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightLong} from '@fortawesome/free-solid-svg-icons';
+import CustomerDetails from '../components/CustomerDetails';
 
 function NewOrder() {
   return (
@@ -21,6 +22,8 @@ function NewOrder() {
             <Menu/>
             <FontAwesomeIcon icon={faArrowRightLong}/>
             <SelectItem/>
+            <FontAwesomeIcon icon={faArrowRightLong}/>
+            <CustomerDetails/>
         </div>
     </div>
   )

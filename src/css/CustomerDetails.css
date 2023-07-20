@@ -1,0 +1,10 @@
+.customer-container{
+    padding: 30px;
+    width: 30%;
+    height: 500px;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    row-gap: 20px;
+}

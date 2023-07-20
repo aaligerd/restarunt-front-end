@@ -4,9 +4,11 @@ export const AppPovider = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [orderedItems, setOrderedItems] = useState([]);
   const [totalBill, setTotalBill] = useState(0);
-  const [changed, setChanged] = useState(true)
+  const [changed, setChanged] = useState(true);
+  const[packet,setPacket]=useState({});
+  const[emp,setEmp]=useState({});
   return (
-    <AppContext.Provider value={{ isLoggedIn, setLoggedIn,orderedItems,setOrderedItems,totalBill,setTotalBill,changed,setChanged}}>
+    <AppContext.Provider value={{ isLoggedIn, setLoggedIn,orderedItems,setOrderedItems,totalBill,setTotalBill,changed,setChanged,packet,setPacket,emp,setEmp}}>
       {children}
     </AppContext.Provider>
   );
