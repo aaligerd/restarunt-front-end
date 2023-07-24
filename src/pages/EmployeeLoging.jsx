@@ -4,9 +4,14 @@ import "../css/EmployeeLogin.css";
 import {Link} from 'react-router-dom';
 
 function EmployeeLoging() {
+const {setLoggedIn,setEmp,isLoggedIn} =useContext(AppContext);
+const isEmpLoggin=localStorage.getItem("loggedin");
+if(isEmpLoggin==="true"){
+    setLoggedIn(true);
+}
+
 const [empCredential, setEmpCredential] = useState({email:"",password:""});
 const [msg, setMsg] = useState("")
-const {setLoggedIn,setEmp} =useContext(AppContext);
 
 const handelLogin=()=>{
 
@@ -49,6 +54,7 @@ const handelLogin=()=>{
             localStorage.setItem("id",result.empid);
             localStorage.setItem("name",result.empname);
             localStorage.setItem("role",result.empjobrole);
+            localStorage.setItem("loggedin",true);
             setLoggedIn(true);
         })
         .catch(error => {

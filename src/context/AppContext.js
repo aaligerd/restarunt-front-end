@@ -7,8 +7,13 @@ export const AppPovider = ({ children }) => {
   const [changed, setChanged] = useState(true);
   const[packet,setPacket]=useState({});
   const[emp,setEmp]=useState({});
+  const [defaultOrderPriority,setDefaultOrderPriority]=useState({
+    "orderPriorityId": 4,
+    "orderStatusName": "waiting",
+    "orderPriority": 2
+});
   return (
-    <AppContext.Provider value={{ isLoggedIn, setLoggedIn,orderedItems,setOrderedItems,totalBill,setTotalBill,changed,setChanged,packet,setPacket,emp,setEmp}}>
+    <AppContext.Provider value={{ isLoggedIn, setLoggedIn,orderedItems,setOrderedItems,totalBill,setTotalBill,changed,setChanged,packet,setPacket,emp,setEmp,defaultOrderPriority,setDefaultOrderPriority}}>
       {children}
     </AppContext.Provider>
   );
