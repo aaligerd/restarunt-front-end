@@ -12,8 +12,12 @@ export const AppPovider = ({ children }) => {
     "orderStatusName": "waiting",
     "orderPriority": 2
 });
+const logOuthandle=()=>{
+  localStorage.clear();
+  setLoggedIn(false);
+}
   return (
-    <AppContext.Provider value={{ isLoggedIn, setLoggedIn,orderedItems,setOrderedItems,totalBill,setTotalBill,changed,setChanged,packet,setPacket,emp,setEmp,defaultOrderPriority,setDefaultOrderPriority}}>
+    <AppContext.Provider value={{ isLoggedIn, setLoggedIn,orderedItems,setOrderedItems,totalBill,setTotalBill,changed,setChanged,packet,setPacket,emp,setEmp,defaultOrderPriority,setDefaultOrderPriority,logOuthandle}}>
       {children}
     </AppContext.Provider>
   );

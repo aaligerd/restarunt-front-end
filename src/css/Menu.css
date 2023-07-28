@@ -1,15 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=REM:wght@400;500&display=swap');
+
 .menu-container{
     width: 30%;
     height: 500px;
-    background-color: rgb(233, 233, 233);
+     
+    background: -webkit-linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+    background: -o-linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+    background: -moz-linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+    background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+ 
     overflow-y: scroll;
     scrollbar-color: #dd7869 #e0e0e0;
     scrollbar-width: thin;
-    border-bottom: 10px solid rgb(233, 233, 233);
+    border-radius: 20px 0px 20px 0;
+
 }
+
+
 #select-lbl{
     text-align: center;
     margin-top: 10px;
     font-size: 20px;
     text-transform: uppercase;
+    font-family: 'REM', sans-serif;
 }

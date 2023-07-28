@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=REM:wght@400;500&display=swap');
+
+
+.choosed-item-container{
+    border-radius: 10px 0px 10px 0px;
+     
+background-image: linear-gradient( to bottom left, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+ 
+}
+
+.sectionHeader
+{
+    font-family: 'REM', sans-serif;
+
+}
+.selectedList{
+margin-left: 5%;
+}
+.selectedList li label{
+    font-family: 'REM', sans-serif;
+}
+.selectedList li input{
+    appearance: textfield;
+    padding: 5px 10px;
+    font-size: 17px;
+    font-family: 'REM', sans-serif;
+}

@@ -4,27 +4,34 @@ import {useNavigate} from "react-router-dom";
 import "../css/CasherHomepage.css";
 import SingleRowComponent from "../components/SingleRowComponent";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
+import { faBowlFood, faRotateRight, faUtensilSpoon, faUtensils } from "@fortawesome/free-solid-svg-icons";
 import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 import PageHeader from "../components/PageHeader";
+import Avater from "../components/Avater";
 
 export default function CasherHomePage() {
-  let fullname = localStorage.getItem("name");
-  let fname = fullname.split(" ")[0];
-  const [empName, setEmpName] = useState(fname);
+  let eid = localStorage.getItem("id");
+  // const [empName, setEmpName] = useState(fname);
   const [orders, setOrders] = useState(null);
   const [msg, setMsg] = useState("")
   const [loadOrderData, setLoadOrderData] = useState(false);
   const navigate=useNavigate();
 
-  const { setLoggedIn } = useContext(AppContext);
+  const { emp,setEmp,setLoggedIn } = useContext(AppContext);
   const handelLogout = () => {
     localStorage.clear();
     setLoggedIn(false);
   };
 
   useEffect(()=>{
-    
+    let url="http://localhost:8080/employee/get/"+eid;
+    fetch(url)
+    .then(res=>res.json())
+    .then(res=>setEmp(res))
+    .catch(err=>console.log("error while fetching employee data"))
+
+
+
     fetch("http://localhost:8080/order/getall")
     .then(res=>res.json())
     .then(res=>{res=sortOrders(res);setOrders(res);})
@@ -40,50 +47,47 @@ export default function CasherHomePage() {
     <div className="container-fluid">
       <PageHeader/>
       <div className="row  mt-3">
-        <div className="col-4 d-flex justify-content-start">
+        <div className="col-4 d-flex flex-column justify-content-start">
           <p id="profile-name">
-            Hello <b>{empName}</b>{" "}
+            Name: {emp.empname}
+          </p>
+          <p id="profile-name">
+            EmpID: {emp.empid}
           </p>
         </div>
         <div className="col-4 d-flex justify-content-around">
-          <button className="btn btn-primary" onClick={()=>{navigate("/neworder");}}>
-            {" "}
-            New Order
+          <button className="button-57" id="middle-btn" onClick={()=>{navigate("/neworder");}}>
+          <span className="text"><FontAwesomeIcon icon={faBowlFood} className="mx-2"/></span>
+            <span>New Order</span>
           </button>
-          <button className="btn btn-primary" >
-            {" "}
-            Order Status
+          <button className="button-57" id="middle-btn"  >
+          <span className="text">
+            <FontAwesomeIcon icon={faUtensils} className="mx-2"/>
+          </span>
+          <span>Check Order Status</span>
           </button>
         </div>
         <div className="col-4 d-flex justify-content-end">
-          <button
-            className="btn btn-primary"
-            id="logoutbtn"
-            onClick={handelLogout}
-          >
-            {" "}
-            Log out
-            <FontAwesomeIcon icon={faArrowRightFromBracket} className="mx-2"/>
+          <button id="logoutbtn" onClick={handelLogout} className="button-57">
+          <span class="text"><FontAwesomeIcon icon={faArrowRightFromBracket} className="mx-2"/></span>
+          <span>LOG OUT</span>
           </button>
         </div>
       </div>
       <div className="container mt-5">
-        <div className="row position-absolute updateText">
-          <div className="col">
-            <p className="text-center">{msg}</p>
-          </div>
-        </div>
-        <div className="row my-2">
-          <div className="col d-flex justify-content-end">
+        <div className="row my-4">
+          <div className="col d-flex justify-content-between">
+            <h4>Food Order</h4>
+            <h4 className="text-center" style={{textTransform:"uppercase",color:"#e74c3c"}}>{msg}</h4>
             <button style={{border:"none",outline:"none", padding:"5px 10px",backgroundColor:"#000",color:"#fff",borderRadius:"5px"}} onClick={()=>{setLoadOrderData(!loadOrderData)}}>Refresh <FontAwesomeIcon icon={faRotateRight}/></button>
           </div>
         </div>
         <table>
           <thead>
             <tr>
-              <th>Order no</th>
-              <th>Packed Items</th>
-              <th>Customer Name</th>
+              <th>Order</th>
+              <th>Customer</th>
+              <th>Items</th>
               <th>Price</th>
               <th>Status</th>
             </tr>
@@ -111,12 +115,12 @@ export default function CasherHomePage() {
                 
               }
              return <tr key={indx}>
-                <td>{ele.orderno}</td>
-                <td>{ele.packet.packeditems} </td>
-                <td>{ele.customer.cname}</td>
-                <td>{ele.packet.packetprice}</td>
+                <td className="orderno-col">{ele.orderno}</td>
+                <td className="cnmae-col"><Avater name={ele.customer.cname}/></td>
+                <td className="item-col">{ele.packet.packeditems} </td>
+                <td className="price-col">Rs.{ele.packet.packetprice}</td>
                 
-                <SingleRowComponent fcolor={fcolor} ftext={ftext} id={indx} orderNo={ele.orderno} setMsg={setMsg} loadOrderData={loadOrderData} loadDataFun={setLoadOrderData}/>
+                <td><SingleRowComponent fcolor={fcolor} ftext={ftext} id={indx} orderNo={ele.orderno} setMsg={setMsg} loadOrderData={loadOrderData} loadDataFun={setLoadOrderData}/></td>
               </tr>
             })}
           </tbody>

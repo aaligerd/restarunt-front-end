@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=REM:wght@400;500&display=swap');
 .choosed-item-container{
     background-color: rgb(219, 219, 219);
     width: 30%;
@@ -5,4 +6,12 @@
 }
 .top-text{
     text-transform: uppercase;
+}
+.itemLbl{
+    font-family: 'REM', sans-serif;
+    padding-left: 10px;
+}
+.itemLbl:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }

@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Konkhmer+Sleokchher&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Satisfy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=REM:wght@400;500&display=swap');
+
 
 .brand-col{
     background-color: rgb(230, 134, 55);
@@ -13,31 +15,114 @@
     color: rgb(31, 31, 31);
 }
 #profile-name{
-    font-size: 30px;
-    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    
+    font-family: 'REM', sans-serif;
     
 }
 
-#logoutbtn{
-    background-color: rgb(231, 231, 231);
-    color: rgb(28, 28, 28);
-    border: #9d9d9d 10px solid;
-    border-radius: 10px;
-    outline: none;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
+
+
+
+/* CSS */
+.button-57 {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #18181a;
+  border-radius: 5%;
+  color: #18181a;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  background: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  height: 80%;
 }
+
+.button-57 span:first-child {
+  position: relative;
+  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 10;
+}
+
+.button-57 span:last-child {
+  color: white;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 100;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translateY(225%) translateX(-50%);
+  height: 14px;
+  line-height: 13px;
+}
+
+.button-57:after {
+  content: "";
+  position: absolute;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transform-origin: bottom center;
+  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  transform: skewY(9.3deg) scaleY(0);
+  z-index: 50;
+}
+
+.button-57:hover:after {
+  transform-origin: bottom center;
+  transform: skewY(9.3deg) scaleY(2);
+}
+
+.button-57:hover span:last-child {
+  transform: translateX(-50%) translateY(-100%);
+  opacity: 1;
+  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+}
+
+#middle-btn {
+    padding: 30px 20px;
+}
+
 .updateText{
     text-transform: uppercase;
     font: 20px;
     color: rgb(253, 50, 14);
     font-weight: bold;
 }
+h4{
+    font-family: 'REM', sans-serif;
+}
+table{
+    font-family: 'REM', sans-serif;
+    font-size: 18px;
+    border-bottom: 1px solid rgb(210, 210, 210);
+    margin-bottom: 100px;
+}
+table th{
+    padding-bottom: 20px;
+    text-align: start;
+    border-bottom: 2px solid rgb(210, 210, 210);
+}
+table td{
+    padding: 20px 10px;
+    text-align: start;
+}
+table tr:hover{
+    background-color: #e8e8e8;
+}
 
-table {
+/* table {
     width:100%;
     border:1px solid #b3adad;
     border-collapse:separate;
@@ -57,5 +142,14 @@ table td {
     padding:5px;
     background: #efefef;
     color: #313030;
-    font-size: 24px;
+    font-size: 24px; 
+}*/
+
+
+.cnmae-col,.item-col{
+    width: 35%;
+}
+
+.orderno-col,.price-col{
+    width: 10%;
 }

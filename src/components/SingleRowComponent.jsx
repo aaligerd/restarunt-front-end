@@ -50,7 +50,8 @@ function SingleRowComponent({fcolor,ftext,id,orderNo,setMsg,loadDataFun,loadOrde
     }
   }
   return (
-    <td id='tblLastCol' style={{color:fcolor}} >
+    // <td id='tblLastCol' style={{color:fcolor}} >
+    <div id='tblLastCol' style={{color:fcolor}}>
         {ftext} 
 
 
@@ -70,7 +71,7 @@ function SingleRowComponent({fcolor,ftext,id,orderNo,setMsg,loadDataFun,loadOrde
         </div>
 
         
-     </td>
+     </div>
   )
 }
 

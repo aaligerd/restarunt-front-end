@@ -4,7 +4,7 @@ import "../css/EmployeeLogin.css";
 import {Link} from 'react-router-dom';
 
 function EmployeeLoging() {
-const {setLoggedIn,setEmp,isLoggedIn} =useContext(AppContext);
+const {setLoggedIn,setEmp} =useContext(AppContext);
 const isEmpLoggin=localStorage.getItem("loggedin");
 if(isEmpLoggin==="true"){
     setLoggedIn(true);
@@ -41,7 +41,7 @@ const handelLogin=()=>{
         redirect: 'follow'
     };
 
-    fetch("http://localhost:8080/epmloyee/login", requestOptions)
+    fetch("http://localhost:8080/employee/login", requestOptions)
         .then(response => {
                 if(response.status===200){
                     return response.json();

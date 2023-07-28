@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
-import {} from "../css/SingleItem.css";
+import {} from "../css/SelectItem.css";
 import { json } from "react-router-dom";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 
@@ -101,13 +101,16 @@ function SelectItem() {
   return (
     <div className="choosed-item-container">
       <div>
-        <p className="text-center my-3 fs-4 top-text">Enter Quantity</p>
+        <p className="text-center my-3 fs-4 top-text sectionHeader">Enter Quantity</p>
       </div>
-      <ol>
+      <ol className="selectedList">
         {orderedItems.map((ele, indx) => {
           return (
             <li key={indx}>
-              {ele.itemname + " " + ele.itemdesc} <br />
+              <label>
+                {ele.itemname + " " + ele.itemdesc} 
+              </label>
+              <br />
               <input
                 type="number"
                 placeholder="Qunt."

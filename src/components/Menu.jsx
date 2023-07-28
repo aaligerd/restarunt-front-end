@@ -16,7 +16,7 @@ function Menu() {
       <div className="text-center">
         <button onClick={deleteOrderList} className="btn btn-primary">Reset List</button>
       </div>
-      <div className="mx-3">
+      <div className="mx-5 my-4">
         {items.map((ele,indx)=>{
             return <SingleItem itemName={ele.itemname} desc={ele.itemdesc} key={indx} itemId={ele.itemid}/>
         })}

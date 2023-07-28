@@ -1,10 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=REM:wght@400;500&display=swap');
+.sectionHeader{
+    font-size: 20px;
+    text-transform: uppercase;
+}
 .customer-container{
     padding: 30px;
     width: 30%;
     height: 500px;
-    background-color: antiquewhite;
+    border-radius: 10px 0px 10px 0px;
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
+    font-family: 'REM', sans-serif;
     row-gap: 20px;
+}
+.customer-container input{
+    outline: none;
+    padding: 5px 10px;
+}
+.customer-container button{
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+.customer-container button:hover{
+    background-color: black;
+    color: white;
+}
+.customer-container p:last-child{
+    color: black;
+    font-size: 20px;
+    font-family: 'REM', sans-serif;
+    text-transform: uppercase;
 }

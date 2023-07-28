@@ -57,12 +57,20 @@ export default function CustomerDetails() {
     };
   return (
     <div className='customer-container'>
+      <p className='sectionHeader fs-4 my-3 '>Customer details</p>
+
         <label htmlFor="cname">Customer Name</label>
+
         <input type="text" id="cname" value={customerCredential.cname} onChange={(e)=>{setCustomerCredential({...customerCredential,"cname":e.target.value})}} />
+
         <label htmlFor="cphone">Customer phone</label>
+
         <input type="text" id="cphone" value={customerCredential.cphone} onChange={(e)=>{setCustomerCredential({...customerCredential,"cphone":e.target.value})}} />
+
         <button onClick={handleOrderPlaced}>Take Order</button>
+
         <p>{msg}</p>
+
     </div>
   )
 }

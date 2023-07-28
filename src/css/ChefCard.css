@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=REM:wght@400;500&display=swap');
+
+.chef-ui-card{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 25%;
+}
+.chef-ui-card label{
+    font-family: "REM",sans-serif;
+    font-size: 20px;
+}
+.orderNumber{
+    color: rgba(240, 14, 14, 0.621);
+    opacity: 0.7;
+}
+.orderNumber::before{
+    content: "#";
+}
+.orderNumber:hover{
+    opacity: 1;
+    cursor: pointer;
+    color: rgba(240, 14, 14, 1)
+}
+.card-btn-grp{
+    padding: 10px 0px;
+}
+.card-btn-grp button{
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    transition: all ease-out 0.3s;
+}
+.card-btn-grp button:first-child:hover{
+    background-color: black;
+    color: whitesmoke;
+}
+.card-btn-grp button:last-child{
+    background-color: black;
+    color: rgb(200, 200, 200);
+}
+.card-btn-grp button:last-child:hover{
+    background-color: whitesmoke;
+    color: black;
+}
