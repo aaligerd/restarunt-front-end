@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=REM:wght@400;500&display=swap');
+
+.chef-card-caontainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+#waitingpara,#yourlistpara{
+    font-family: "REM",sans-serif;
+    text-transform: uppercase;
+}

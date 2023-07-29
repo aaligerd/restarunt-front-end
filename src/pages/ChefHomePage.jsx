@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
 import PageHeader from "../components/PageHeader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../css/ChefHomePage.css";
 import {
   faBowlFood,
   faRotateRight,
@@ -15,6 +16,12 @@ function ChefHomePage() {
   let eid = localStorage.getItem("id");
   const { setLoggedIn, logOuthandle, emp, setEmp } = useContext(AppContext);
   const [order, setOrder] = useState([]);
+  const [selfOrder, setSelfOrder] = useState([]);
+  const [loadOrderData, setLoadOrderData] = useState(true);
+
+  const handelRefreshChefOrder=()=>{
+    setLoadOrderData(!loadOrderData);
+  }
 
   const handelLogout = () => {
     logOuthandle();
@@ -25,14 +32,20 @@ function ChefHomePage() {
       .then((res) => res.json())
       .then((res) => setEmp(res))
       .catch((err) => console.log("error while fetching employee data"));
-      let url2="http://localhost:8080/order/getbypriority/1";
+      let url2="http://localhost:8080/order/getbypriority/4";
       fetch(url2)
       .then(res=>res.json())
       .then(res=>setOrder(res))
       .catch(err=>console.log(err));
-      console.log(order)
+      let url3=process.env.REACT_APP_URL+"order/getbyemp/"+eid;
+      console.log(url3)
+      fetch(url3)
+      .then(res=>res.json())
+      .then(res=>setSelfOrder(res))
+      .catch(err=>console.log(err))
 
-  }, []);
+
+  }, [loadOrderData]);
 
   return (
     <div>
@@ -56,13 +69,36 @@ function ChefHomePage() {
           </div>
         </div>
       </div>
+    <div className="container">
+      <div className="row">
+        <div>
+          <p className="text-center fs-3" id="waitingpara">Waiting List</p>
+        </div>
+      </div>
+    </div>
       <div className="container">
-        <div className="row">
-        <div className="col d-flex justify-content-between flex-wrap">
+        <div className="row mb-4">
+          <div className="col d-flex justify-content-end">
+          <button className="refreshBtn" onClick={handelRefreshChefOrder}>
+              Refresh
+              <FontAwesomeIcon id="refIcn" icon={faRotateRight} />
+            </button>
+          </div>
+        </div>
+        <div className="row chef-card-caontainer">
             {order && order.map((ele,indx)=>{
-              return <ChefCard orderno={ele.orderno} item={ele.packet.packeditems} key={indx}/>
+              return <ChefCard loadOrderData={loadOrderData} setLoadOrderData={setLoadOrderData} orderno={ele.orderno} item={ele.packet.packeditems} key={indx} accept={true}/>
             })}
         </div>
+      </div>
+      <div className="container my-5">
+        <div className="row chef-card-caontainer">
+          <div>
+            <p className="text-center fs-3" id="yourlistpara">Your List</p>
+          </div>
+          {selfOrder && selfOrder.map((ele,indx)=>{
+              return <ChefCard loadOrderData={loadOrderData} setLoadOrderData={setLoadOrderData} orderno={ele.orderno} item={ele.packet.packeditems} key={indx} accept={false}/>
+            })}
         </div>
       </div>
     </div>
