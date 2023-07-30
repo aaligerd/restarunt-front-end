@@ -40,8 +40,8 @@ const handelLogin=()=>{
         body: raw,
         redirect: 'follow'
     };
-
-    fetch("http://localhost:8080/employee/login", requestOptions)
+let url=process.env.REACT_APP_URL+"employee/login";
+    fetch(url, requestOptions)
         .then(response => {
                 if(response.status===200){
                     return response.json();

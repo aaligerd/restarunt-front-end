@@ -13,7 +13,7 @@ const handelForgotPass=()=>{
     return;
   }
   let random_otp=Math.floor(Math.random()*10000);
-  let forgotOtpUrl="http://localhost:8080/epmloyee/forgetpass/sendopt/"+email.email+"/"+random_otp;
+  let forgotOtpUrl=process.env.REACT_APP_URL+"employee/forgetpass/sendopt/"+email.email+"/"+random_otp;
   localStorage.setItem("otp",random_otp);
   fetch(forgotOtpUrl,{method:"POST"});
   navigat("/forgetpassword/otp");

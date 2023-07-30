@@ -24,15 +24,15 @@ export default function CasherHomePage() {
   };
 
   useEffect(()=>{
-    let url="http://localhost:8080/employee/get/"+eid;
-    fetch(url)
+    let url=process.env.REACT_APP_URL;
+    fetch(url+"employee/get/"+eid)
     .then(res=>res.json())
     .then(res=>setEmp(res))
     .catch(err=>console.log("error while fetching employee data"))
 
 
 
-    fetch("http://localhost:8080/order/getall")
+    fetch(url+"order/getall")
     .then(res=>res.json())
     .then(res=>{res=sortOrders(res);setOrders(res);})
     .catch(err=>{console.log(err)});

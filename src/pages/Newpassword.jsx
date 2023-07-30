@@ -17,7 +17,7 @@ const handelNewPassword=()=>{
         console.log(empCredential.confirmpassword,empCredential.newpassword)
         return;
     }
-    let url="http://localhost:8080/epmloyee/password/newpassword?email="+empCredential.email+"&password="+empCredential.newpassword;
+    let url=process.env.REACT_APP_URL+"employee/password/newpassword?email="+empCredential.email+"&password="+empCredential.newpassword;
     
     fetch(url,{method:"POST"})
     .then(res=>{
