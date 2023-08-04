@@ -4,10 +4,14 @@ import {useNavigate} from "react-router-dom";
 import "../css/CasherHomepage.css";
 import SingleRowComponent from "../components/SingleRowComponent";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faBowlFood, faRotateRight, faUtensilSpoon, faUtensils } from "@fortawesome/free-solid-svg-icons";
+import { faBowlFood, faL, faRotateRight, faUtensilSpoon, faUtensils } from "@fortawesome/free-solid-svg-icons";
 import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 import PageHeader from "../components/PageHeader";
 import Avater from "../components/Avater";
+import Loading from "../components/Loading";
+import OrderTable from "../components/OrderTable";
+
+
 
 export default function CasherHomePage() {
   let eid = localStorage.getItem("id");
@@ -15,6 +19,7 @@ export default function CasherHomePage() {
   const [orders, setOrders] = useState(null);
   const [msg, setMsg] = useState("")
   const [loadOrderData, setLoadOrderData] = useState(false);
+  const [hasData, setHasData] = useState(false);
   const navigate=useNavigate();
 
   const { emp,setEmp,setLoggedIn } = useContext(AppContext);
@@ -35,6 +40,10 @@ export default function CasherHomePage() {
     fetch(url+"order/getall")
     .then(res=>res.json())
     .then(res=>{res=sortOrders(res);setOrders(res);})
+    .then(()=>{
+      setHasData(true);
+
+    })
     .catch(err=>{console.log(err)});
   },[loadOrderData]);
   const sortOrders=(res)=>{
@@ -79,52 +88,11 @@ export default function CasherHomePage() {
           <div className="col d-flex justify-content-between">
             <h4>Food Order</h4>
             <h4 className="text-center" style={{textTransform:"uppercase",color:"#e74c3c"}}>{msg}</h4>
-            <button style={{border:"none",outline:"none", padding:"5px 10px",backgroundColor:"#000",color:"#fff",borderRadius:"5px"}} onClick={()=>{setLoadOrderData(!loadOrderData)}}>Refresh <FontAwesomeIcon icon={faRotateRight}/></button>
+            <button style={{border:"none",outline:"none", padding:"5px 10px",backgroundColor:"#000",color:"#fff",borderRadius:"5px"}} onClick={()=>{setLoadOrderData(!loadOrderData);setHasData(false);}}>Refresh <FontAwesomeIcon icon={faRotateRight}/></button>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Order</th>
-              <th>Customer</th>
-              <th>Items</th>
-              <th>Price</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders && orders.map((ele,indx)=>{
-              let orderStatus=ele.orderPriority.orderStatusName;
-              let ftext,fcolor;
-              if(orderStatus==="served"){
-                fcolor="black";
-                ftext="served";
-              }
-              else if(orderStatus==="ready"){
-                fcolor="green";
-                ftext="ready";
-              }
-              else if(orderStatus==="ongoing"){
-                fcolor="blue";
-                ftext="ongoing";
-              }
-              else{
-               
-                  fcolor="red";
-                  ftext="waiting";
-                
-              }
-             return <tr key={indx}>
-                <td className="orderno-col">{ele.orderno}</td>
-                <td className="cnmae-col"><Avater name={ele.customer.cname}/></td>
-                <td className="item-col">{ele.packet.packeditems} </td>
-                <td className="price-col">Rs.{ele.packet.packetprice}</td>
-                
-                <td><SingleRowComponent fcolor={fcolor} ftext={ftext} id={indx} orderNo={ele.orderno} setMsg={setMsg} loadOrderData={loadOrderData} loadDataFun={setLoadOrderData}/></td>
-              </tr>
-            })}
-          </tbody>
-        </table>
+        {hasData?<OrderTable orders={orders}
+        setMsg={setMsg} loadOrderData={loadOrderData} setLoadOrderData={setLoadOrderData}/>:<Loading/>}
       </div>
     </div>
   );

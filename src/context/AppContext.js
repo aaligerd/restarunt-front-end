@@ -16,8 +16,11 @@ const logOuthandle=()=>{
   localStorage.clear();
   setLoggedIn(false);
 }
+const [graph1, setGraph1] = useState([]);
+
+
   return (
-    <AppContext.Provider value={{ isLoggedIn, setLoggedIn,orderedItems,setOrderedItems,totalBill,setTotalBill,changed,setChanged,packet,setPacket,emp,setEmp,defaultOrderPriority,setDefaultOrderPriority,logOuthandle}}>
+    <AppContext.Provider value={{ isLoggedIn, setLoggedIn,orderedItems,setOrderedItems,totalBill,setTotalBill,changed,setChanged,packet,setPacket,emp,setEmp,defaultOrderPriority,setDefaultOrderPriority,logOuthandle,graph1,setGraph1}}>
       {children}
     </AppContext.Provider>
   );
