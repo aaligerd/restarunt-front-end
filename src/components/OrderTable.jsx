@@ -3,7 +3,6 @@ import Avater from './Avater';
 import SingleRowComponent from './SingleRowComponent';
 
 function OrderTable({orders,setMsg,loadOrderData,setLoadOrderData}) {
-    console.log(orders)
   return (
     <table>
           <thead>

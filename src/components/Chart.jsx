@@ -7,15 +7,12 @@ import '../css/Chart.css';
 
 Chart.register(CategoryScale);
 
-function Charts({LinechartData,DounutchartData}) {  
+function Charts({LinechartData,}) {  
   return (
     <div className='line-chart'>
       <div className='graph'>
         <Line data={LinechartData} options={{responsive:true,maintainAspectRatio:true}}/>
       </div>
-        {/* <div className='graph'>
-          <Bar data={DounutchartData} options={{responsive:true,maintainAspectRatio:true}}/>
-        </div> */}
     </div>
   )
 }

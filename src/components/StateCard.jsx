@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/Statcard.css";
 function StatCard(props) {
-  const { title, number, details, color } = props;
+  const { title, number, details, color,isCurrency } = props;
   const colorNum = parseInt(color);
   const colorGrade = [
     "linear-gradient(-60deg, #ff5858 0%, #f09819 100%)",
@@ -19,7 +19,7 @@ function StatCard(props) {
           <p>{title}</p>
         </div>
         <div className="card-details">
-          <p>{details}</p>
+          <p>{isCurrency?"Rs. "+details:details}</p>
         </div>
       </div>
     </div>
