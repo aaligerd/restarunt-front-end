@@ -4,6 +4,7 @@ import SingleRowComponent from './SingleRowComponent';
 
 function OrderTable({orders,setMsg,loadOrderData,setLoadOrderData}) {
   return (
+    <div className='tbl-container'>
     <table>
           <thead>
             <tr>
@@ -47,6 +48,7 @@ function OrderTable({orders,setMsg,loadOrderData,setLoadOrderData}) {
             })}
           </tbody>
         </table>
+        </div>
   )
 }
 

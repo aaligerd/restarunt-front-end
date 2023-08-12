@@ -2,12 +2,10 @@ import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
 import {useNavigate} from "react-router-dom";
 import "../css/CasherHomepage.css";
-import SingleRowComponent from "../components/SingleRowComponent";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faBowlFood, faL, faRotateRight, faUtensilSpoon, faUtensils } from "@fortawesome/free-solid-svg-icons";
+import { faBowlFood, faRotateRight, faUtensils } from "@fortawesome/free-solid-svg-icons";
 import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 import PageHeader from "../components/PageHeader";
-import Avater from "../components/Avater";
 import Loading from "../components/Loading";
 import OrderTable from "../components/OrderTable";
 
