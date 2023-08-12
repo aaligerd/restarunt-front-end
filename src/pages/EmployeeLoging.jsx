@@ -41,6 +41,7 @@ const handelLogin=()=>{
         redirect: 'follow'
     };
 let url=process.env.REACT_APP_URL+"employee/login";
+console.log(url)
     fetch(url, requestOptions)
         .then(response => {
                 if(response.status===200){
