@@ -57,7 +57,7 @@ function SelectItem() {
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
+    const url=process.env.REACT_APP_URL;
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -65,7 +65,7 @@ function SelectItem() {
       redirect: "follow",
     };
 
-    fetch("http://localhost:8080/packet/create", requestOptions)
+    fetch(url+"packet/create", requestOptions)
       .then((response) =>
         response.status === 201 ? response.json() : setMsg("Some Thing Wrong")
       )

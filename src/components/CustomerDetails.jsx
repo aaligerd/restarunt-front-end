@@ -12,7 +12,7 @@ export default function CustomerDetails() {
 
     //handel customer order
     const handleOrderPlaced=()=>{
-      let url="http://localhost:8080";
+      let url=process.env.REACT_APP_URL;
       var myHeader=new Headers();
       myHeader.append("Content-Type","application/json");
 
@@ -23,7 +23,7 @@ export default function CustomerDetails() {
       }
 
       //saving customer details in data
-      fetch(url+"/customer/create",requestOption1)
+      fetch(url+"customer/create",requestOption1)
       .then(res=>res.json())
       .then(res=>{
         const orderObj={
