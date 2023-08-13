@@ -27,19 +27,18 @@ function ChefHomePage() {
     logOuthandle();
   };
   useEffect(() => {
-    let url1 = "http://localhost:8080/employee/get/" + eid;
-    fetch(url1)
+    const url=process.env.REACT_APP_URL
+    fetch(url+"employee/get/")
       .then((res) => res.json())
       .then((res) => setEmp(res))
       .catch((err) => console.log("error while fetching employee data"));
-      let url2="http://localhost:8080/order/getbypriority/4";
-      fetch(url2)
+  
+      fetch(url+"order/getbypriority/4")
       .then(res=>res.json())
       .then(res=>setOrder(res))
       .catch(err=>console.log(err));
-      let url3=process.env.REACT_APP_URL+"order/getbyemp/"+eid;
-      console.log(url3)
-      fetch(url3)
+      
+      fetch(url+"order/getbyemp/"+eid)
       .then(res=>res.json())
       .then(res=>setSelfOrder(res))
       .catch(err=>console.log(err))
