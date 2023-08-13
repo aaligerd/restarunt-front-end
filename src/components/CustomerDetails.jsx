@@ -37,7 +37,7 @@ export default function CustomerDetails() {
           headers:myHeader,
           body:JSON.stringify(orderObj)
         }
-        fetch(url+"/order/create",requestOption2)
+        fetch(url+"order/create",requestOption2)
         .then(res=>res.text())
         .then((res=>{
           setMsg(res);
